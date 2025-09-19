@@ -12,4 +12,10 @@ export default async function handler(request, response) {
     }
     response.status(200).json(place);
   }
+
+  if (request.method === "PUT") {
+    const place = request.body;
+    await Place.findByIdAndUpdate(id, place);
+    response.status(200).json({ status: "Place successfully updated." });
+  }
 }
